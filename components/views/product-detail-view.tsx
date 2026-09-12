@@ -25,6 +25,20 @@ export function ProductDetailView({ locale, slug }: { locale: Locale; slug: stri
       <BreadcrumbJsonLd items={crumbs} />
       <FaqJsonLd items={product.detail.faq} />
 
+      <VideoBlock
+        locale={locale}
+        eyebrow={d.video.productEyebrow}
+        title={locale === 'en' ? `${product.name} product overview` : `${product.name} ürün tanıtımı`}
+        description={
+          locale === 'en'
+            ? `Discover how ${product.name} supports secure, measurable and sustainable operations.`
+            : `${product.name} ile güvenli, ölçülebilir ve sürdürülebilir operasyonların nasıl desteklendiğini keşfedin.`
+        }
+        src={product.slug === 'dasbase' ? 'https://www.youtube-nocookie.com/embed/kwpfiUib--0?si=Q21W4lEMzoE9hjpK&cc_load_policy=0&vq=hd1080&playsinline=1' : product.slug === 'vultureeye' ? 'https://www.youtube-nocookie.com/embed/J5WOdj_ylyE?cc_load_policy=0&vq=hd1080&playsinline=1' : undefined}
+        embed={product.slug === 'dasbase' || product.slug === 'vultureeye'}
+        poster="/images/dijital-arsiv-video-poster.png"
+      />
+
       <PageHero
         eyebrow={product.category}
         title={product.name}
@@ -57,18 +71,6 @@ export function ProductDetailView({ locale, slug }: { locale: Locale; slug: stri
           </div>
         </div>
       </PageHero>
-
-      <VideoBlock
-        locale={locale}
-        eyebrow={d.video.productEyebrow}
-        title={locale === 'en' ? `${product.name} product overview` : `${product.name} ürün tanıtımı`}
-        description={
-          locale === 'en'
-            ? `Discover how ${product.name} supports secure, measurable and sustainable operations.`
-            : `${product.name} ile güvenli, ölçülebilir ve sürdürülebilir operasyonların nasıl desteklendiğini keşfedin.`
-        }
-        poster="/images/dijital-arsiv-video-poster.png"
-      />
 
       <DetailSections detail={product.detail} locale={locale} />
 
